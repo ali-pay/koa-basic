@@ -1,0 +1,54 @@
+@host=https://localhost:9000
+@token=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhhMGI0NDU2NThlOTcyZjAwZmQ0MGUiLCJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJlYTRhOWZhMjlkNTUxMDZmN2ViYTRiYWZhZWNiMThjNmViZGZhYmU5MDE5ZjRhNzYzYmIwY2Y5NTUzMWVkNDI5Iiwibmlja25hbWUiOiLotoXnuqfnrqHnkIblkZgiLCJzYWx0IjoiYWxpLXBheSIsImNvZGUiOiIiLCJkaXNhYmxlZCI6ZmFsc2UsInJvbGVzIjpbeyJfaWQiOiI2NjhhMGFhMDVhYjlmOWUxMTQ2NWMwZTMiLCJuYW1lIjoi6LaF57qn566h55CG5ZGYIiwiY29kZSI6ImFkbWluIiwicGNNZW51cyI6W3sibWVudSI6IioiLCJjcmVhdGUiOnRydWUsInJlYWQiOnRydWUsInVwZGF0ZSI6dHJ1ZSwiZGVsZXRlIjp0cnVlfV0sImFwcE1lbnVzIjpbXSwiaWQiOiI2NjhhMGFhMDVhYjlmOWUxMTQ2NWMwZTMifV0sInBjTWVudXMiOltdLCJhcHBNZW51cyI6W10sImlkIjoiNjY4YTBiNDQ1NjU4ZTk3MmYwMGZkNDBlIiwiaWF0IjoxNzIwOTYwODQwLCJleHAiOjE3MjA5NjQ0NDB9.C4L0ZctDtzG6cvXgAZ0uFE1ir4jSG6YQOY7l_ITuW_o
+
+### 查询api日志
+POST {{host}}/api/api_log/search_api_log
+Content-Type: application/json
+
+{
+  "deleted": false,
+  "page": 1,
+  "limit": 10,
+  "sort": {
+    "_id": 1
+  }
+}
+
+### 创建api日志
+POST {{host}}/api/api_log/create_api_log
+Content-Type: application/json
+{{token}}
+
+{
+
+}
+
+### 更新api日志
+POST {{host}}/api/api_log/update_api_log
+Content-Type: application/json
+{{token}}
+
+{
+  "_ids": [],
+  "update": {
+
+  }
+}
+
+### 软删除api日志
+POST {{host}}/api/api_log/delete_api_log
+Content-Type: application/json
+{{token}}
+
+{
+  "_ids": []
+}
+
+### 硬删除api日志
+POST {{host}}/api/api_log/remove_api_log
+Content-Type: application/json
+{{token}}
+
+{
+  "_ids": []
+}

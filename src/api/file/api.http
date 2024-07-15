@@ -1,0 +1,71 @@
+@host=https://localhost:9000
+@token=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhhMGI0NDU2NThlOTcyZjAwZmQ0MGUiLCJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJlYTRhOWZhMjlkNTUxMDZmN2ViYTRiYWZhZWNiMThjNmViZGZhYmU5MDE5ZjRhNzYzYmIwY2Y5NTUzMWVkNDI5Iiwibmlja25hbWUiOiLotoXnuqfnrqHnkIblkZgiLCJzYWx0IjoiYWxpLXBheSIsImNvZGUiOiIiLCJkaXNhYmxlZCI6ZmFsc2UsInJvbGVzIjpbeyJfaWQiOiI2NjhhMGFhMDVhYjlmOWUxMTQ2NWMwZTMiLCJuYW1lIjoi6LaF57qn566h55CG5ZGYIiwiY29kZSI6ImFkbWluIiwicGNNZW51cyI6W3sibWVudSI6IioiLCJjcmVhdGUiOnRydWUsInJlYWQiOnRydWUsInVwZGF0ZSI6dHJ1ZSwiZGVsZXRlIjp0cnVlfV0sImFwcE1lbnVzIjpbXSwiaWQiOiI2NjhhMGFhMDVhYjlmOWUxMTQ2NWMwZTMifV0sInBjTWVudXMiOltdLCJhcHBNZW51cyI6W10sImlkIjoiNjY4YTBiNDQ1NjU4ZTk3MmYwMGZkNDBlIiwiaWF0IjoxNzIwOTY4NTM4LCJleHAiOjE3MjM1NjA1Mzh9.ixPK-JZGdy3qwEd26auHiWwZoZXlWyTnzOfuLDTkrpk
+
+### 查询文件
+POST {{host}}/api/file/search_file
+Content-Type: application/json
+
+{
+  "deleted": false,
+  "page": 1,
+  "limit": 10,
+  "sort": {
+    "_id": 1
+  }
+}
+
+### 创建文件
+POST {{host}}/api/file/create_file
+Content-Type: application/json
+{{token}}
+
+{
+
+}
+
+### 更新文件
+POST {{host}}/api/file/update_file
+Content-Type: application/json
+{{token}}
+
+{
+  "_ids": [],
+  "update": {
+
+  }
+}
+
+### 软删除文件
+POST {{host}}/api/file/delete_file
+Content-Type: application/json
+{{token}}
+
+{
+  "_ids": []
+}
+
+### 硬删除文件
+POST {{host}}/api/file/remove_file
+Content-Type: application/json
+{{token}}
+
+{
+  "_ids": ["66953d58b395fcd5d5d76db6","66953d58b395fcd5d5d76db7"]
+}
+
+### 上传文件
+POST {{host}}/api/file/upload_file
+{{token}}
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="files"; filename=".npmrc"
+Content-Type: text/plain
+
+< ../../../.npmrc
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="files"; filename="package.json"
+Content-Type: application/json
+
+< ../../../package.json
+------WebKitFormBoundary7MA4YWxkTrZu0gW--

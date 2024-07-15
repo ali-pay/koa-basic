@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "EditorConfig.EditorConfig",
+    "dbaeumer.vscode-eslint",
+    "humao.rest-client",
+    "piotrpalarz.vscode-gitignore-generator"
+  ]
+}

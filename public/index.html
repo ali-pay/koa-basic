@@ -1,0 +1,77 @@
+<html>
+  <head>
+    <title>Express - Node.js web application framework</title>
+    <link rel="icon" type="image/png" href="./favicon.ico" />
+    <script src="./js/socket.io.min.js"></script>
+    <script>
+      const socket = io({ auth: { token: localStorage.getItem('token') } })
+      socket.on('系统时间', (data) => console.log('系统时间:', data))
+    </script>
+    <style>
+      /* https://garet.typeforward.com/assets/fonts/campaigns/OddvalVariable-VariableVF.woff2 */
+      @font-face {
+        font-family: OddvalVariable;
+        font-display: auto;
+        font-weight: 400;
+        font-style: normal;
+        src: url('./fonts/OddvalVariable-VariableVF.woff2')
+          format('woff2-variations');
+      }
+      @keyframes dance {
+        0%,
+        100% {
+          font-variation-settings:
+            'wght' 900,
+            'ital' 1;
+        }
+        50% {
+          font-variation-settings:
+            'wght' 100,
+            'ital' 0;
+        }
+      }
+      span {
+        animation-name: dance;
+        animation-duration: 3s;
+        transition-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+      }
+    </style>
+  </head>
+  <body
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-image: url('./images/417fe7c3-bfbd-47ac-a965-72c4206e4211.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      color: white;
+      font-size: 5vw;
+      font-family: OddvalVariable;
+      font-variation-settings:
+        'wght' 900,
+        'ital' 1;
+      user-select: none;
+    "
+  >
+    <span style="animation-delay: 0s">h</span>
+    <span style="animation-delay: 0.1s">e</span>
+    <span style="animation-delay: 0.2s">l</span>
+    <span style="animation-delay: 0.3s">l</span>
+    <span style="animation-delay: 0.4s">o</span>
+    <span>&nbsp;</span>
+    <span>&nbsp;</span>
+    <span style="animation-delay: 0.5s">w</span>
+    <span style="animation-delay: 0.6s">o</span>
+    <span style="animation-delay: 0.7s">r</span>
+    <span style="animation-delay: 0.8s">l</span>
+    <span style="animation-delay: 0.9s">d</span>
+    <span style="animation-delay: 1s">.</span>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+### GET index
+GET https://localhost:9000/
+
+### GET static file
+GET https://localhost:9000/LICENSE.electron.txt
+
+### GET 404
+GET https://localhost:9000/time
+
+### GET success
+GET https://localhost:9000/api/success
+
+### GET error
+GET https://localhost:9000/api/error
+
+### GET null
+GET https://localhost:9000/api/null
+
+### GET crash
+GET https://localhost:9000/api/crash
+
+### GET notfound
+GET https://localhost:9000/api/notfound

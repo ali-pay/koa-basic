@@ -1,0 +1,91 @@
+@host=https://localhost:9000
+@token=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhhMGI0NDU2NThlOTcyZjAwZmQ0MGUiLCJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJlYTRhOWZhMjlkNTUxMDZmN2ViYTRiYWZhZWNiMThjNmViZGZhYmU5MDE5ZjRhNzYzYmIwY2Y5NTUzMWVkNDI5Iiwibmlja25hbWUiOiLotoXnuqfnrqHnkIblkZgiLCJzYWx0IjoiYWxpLXBheSIsImNvZGUiOiIiLCJkaXNhYmxlZCI6ZmFsc2UsInJvbGVzIjpbeyJfaWQiOiI2NjhhMGFhMDVhYjlmOWUxMTQ2NWMwZTMiLCJuYW1lIjoi6LaF57qn566h55CG5ZGYIiwiY29kZSI6ImFkbWluIiwicGNNZW51cyI6W3sibWVudSI6IioiLCJjcmVhdGUiOnRydWUsInJlYWQiOnRydWUsInVwZGF0ZSI6dHJ1ZSwiZGVsZXRlIjp0cnVlfV0sImFwcE1lbnVzIjpbXSwiaWQiOiI2NjhhMGFhMDVhYjlmOWUxMTQ2NWMwZTMifV0sInBjTWVudXMiOltdLCJhcHBNZW51cyI6W10sImlkIjoiNjY4YTBiNDQ1NjU4ZTk3MmYwMGZkNDBlIiwiaWF0IjoxNzIwOTYwODQwLCJleHAiOjE3MjA5NjQ0NDB9.C4L0ZctDtzG6cvXgAZ0uFE1ir4jSG6YQOY7l_ITuW_o
+
+### 查询字典列表
+POST {{host}}/api/dict_list/search_dict_list
+Content-Type: application/json
+
+{
+  "deleted": false,
+  "page": 1,
+  "limit": 10,
+  "sort": {
+    "_id": 1
+  },
+  "projection": {
+    "label": 1,
+    "value": 1,
+    "kind": 1,
+    "kinds": 1,
+    "parent": 1,
+    "children": 1
+  },
+  "populate": []
+}
+
+### 创建字典列表
+POST {{host}}/api/dict_list/create_dict_list
+Content-Type: application/json
+{{token}}
+
+{
+
+}
+
+### 更新字典列表
+POST {{host}}/api/dict_list/update_dict_list
+Content-Type: application/json
+{{token}}
+
+{
+  "_ids": [],
+  "update": {
+
+  }
+}
+
+### 软删除字典列表
+POST {{host}}/api/dict_list/delete_dict_list
+Content-Type: application/json
+{{token}}
+
+{
+  "_ids": []
+}
+
+### 硬删除字典列表
+POST {{host}}/api/dict_list/remove_dict_list
+Content-Type: application/json
+{{token}}
+
+{
+  "_ids": []
+}
+
+### 查询字典列表树
+POST {{host}}/api/dict_list/search_dict_list_tree
+Content-Type: application/json
+
+{
+  "deleted": false,
+  "page": 1,
+  "limit": 20,
+  "sort": {
+    "_id": 1
+  },
+  "projection": {
+    "label": 1,
+    "value": 1,
+    "kind": 1,
+    "kinds": 1,
+    "parent": 1,
+    "children": 1
+  },
+  "populate": []
+}
+
+### 查询字典列表树（根据 parent）
+POST {{host}}/api/dict_list/search_dict_list_tree_by_parent
+
+### 查询字典列表树（根据 children）
+POST {{host}}/api/dict_list/search_dict_list_tree_by_children
