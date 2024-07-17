@@ -1,8 +1,8 @@
-import { GET } from '@util/axios'
+import { axiosInstance } from '@util/axios'
 
 function test() {
   for (let i = 1; i <= 5; i++) {
-    GET(`https://localhost:9000/api/system/ping`).then(data => console.log('queue:', data))
+    axiosInstance.get(`https://localhost:9000/api/system/info`).then(({ data }) => console.log('data:', data))
   }
 }
 

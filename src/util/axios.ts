@@ -6,11 +6,11 @@ import queryString from 'query-string'
 import stringify from 'safe-stable-stringify'
 import { AxiosLog } from '@api/axios_log/entity'
 
-const instance = axios.create({
+export const axiosInstance = axios.create({
   httpsAgent: new https.Agent({ rejectUnauthorized: false }),
 })
 
-export async function GET(url: string, params: object = null, headers: object = null) {
+export async function axiosGet(url: string, params: object = null, headers: object = null) {
   // 记录到数据库
   const ctx = new URL(url)
   const start = dayjs()
@@ -31,7 +31,7 @@ export async function GET(url: string, params: object = null, headers: object = 
   })
   const result = { code: 0, message: '成功', data: null, status: 0 }
   try {
-    const resp = await instance.get(url, { params, headers })
+    const resp = await axiosInstance.get(url, { params, headers })
     result.data = resp.data
     result.status = resp.status
   }
@@ -51,7 +51,7 @@ export async function GET(url: string, params: object = null, headers: object = 
   return result
 }
 
-export async function POST(url: string, body: object = null, headers: object = null) {
+export async function axiosPost(url: string, body: object = null, headers: object = null) {
   // 记录到数据库
   const ctx = new URL(url)
   const start = dayjs()
@@ -72,7 +72,7 @@ export async function POST(url: string, body: object = null, headers: object = n
   })
   const result = { code: 0, message: '成功', data: null, status: 0 }
   try {
-    const resp = await instance.post(url, body, { headers })
+    const resp = await axiosInstance.post(url, body, { headers })
     result.data = resp.data
     result.status = resp.status
   }
