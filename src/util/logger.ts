@@ -5,8 +5,8 @@ import { DATE_FORMAT } from '@util/constant'
 export const formats = {
   default: winston.format.combine(
     winston.format.splat(),
-    winston.format.timestamp({ format: DATE_FORMAT.DATETIMES }),
-    winston.format.printf(info => `[${info.timestamp}] [${info.level.toUpperCase()}] ${info.message}`),
+    winston.format.timestamp({ format: DATE_FORMAT.DATETIME }),
+    winston.format.printf(info => `| ${info.timestamp} | ${info.level.toUpperCase().padStart(5, ' ')} | ${info.message}`),
   ),
 }
 
