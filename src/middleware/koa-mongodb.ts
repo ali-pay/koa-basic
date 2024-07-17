@@ -4,20 +4,17 @@ import { ApiLog } from '@api/api_log/entity'
 
 function koaMongodb(): Middleware {
   return async (ctx, next) => {
-    // method不匹配，则跳过
-    // const methods = ['POST']
-    // if (!methods.includes(ctx.method)) {
-    //   await next()
-    //   return
-    // }
+    // 跳过非 POST 请求
+    if (ctx.methods !== 'POST') {
+      await next()
+      return
+    }
 
-    // api前缀不匹配，则跳过
-    // const prefixs = ['/api/system/']
-    // const prefix = ctx.path.endsWith('/') ? ctx.path : `${ctx.path}/`
-    // if (!prefixs.some(e => prefix.startsWith(e))) {
-    //   await next()
-    //   return
-    // }
+    // 跳过 search_ 路由
+    if (ctx.path.includes('/search_')) {
+      await next()
+      return
+    }
 
     // 记录到数据库
     const start = dayjs()
