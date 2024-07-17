@@ -8,7 +8,6 @@ import koaError from '@middleware/koa-error'
 import koaValidate from '@middleware/koa-validate'
 import koaPaginate from '@middleware/koa-paginate'
 import koaMongodb from '@middleware/koa-mongodb'
-import koaQueue from '@middleware/koa-queue'
 
 async function initMiddleware(app: Koa) {
   // allow static file
@@ -39,9 +38,6 @@ async function initMiddleware(app: Koa) {
 
   // body parser
   app.use(koaBodyparser())
-
-  // catch request limit
-  app.use(koaQueue())
 }
 
 export default initMiddleware

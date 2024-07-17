@@ -22,21 +22,6 @@ async function waitingClose(path: string) {
 
 function koaQueue(): Middleware {
   return async (ctx, next) => {
-    // method不匹配，则跳过
-    // const methods = ['POST']
-    // if (!methods.includes(ctx.method)) {
-    //   await next()
-    //   return
-    // }
-
-    // api前缀不匹配，则跳过
-    const prefixs = ['/api/system/ping']
-    const prefix = ctx.path.endsWith('/') ? ctx.path : `${ctx.path}/`
-    if (!prefixs.some(e => prefix.startsWith(e))) {
-      await next()
-      return
-    }
-
     ctx.res.on('close', () => {
       const found = queue.find(e => e.path === ctx.path)
       if (!found) {
