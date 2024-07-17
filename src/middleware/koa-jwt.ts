@@ -1,9 +1,7 @@
 import type { Middleware } from 'koa'
 import config from 'config'
-import dayjs from 'dayjs'
 import jsonwebtoken from 'jsonwebtoken'
 import type { IRole } from '@api/role/entity'
-import { DATE_FORMAT } from '@util/constant'
 
 /**
  * 接口访问权限校验
@@ -23,17 +21,16 @@ function koaJwt(roles?: string[]): Middleware {
         ctx.state.user = jsonwebtoken.verify(token, salt)
         const userRoles: string[] = ctx.state.user.roles.map((e: IRole) => e.code)
         if (!roles.includes('*') && !userRoles.includes('admin') && !userRoles.some(e => roles.includes(e))) {
-          throw new Error('Role Forbidden')
+          throw new Error('当前角色无访问权限')
         }
       }
       catch (err) {
-        let message = 'TOKEN 未知错误'
+        let message = err.message
         if (err.message.includes('jwt must be provided')) {
           message = 'TOKEN 未传入'
         }
         else if (err.message.includes('jwt expired')) {
           message = 'TOKEN 过期'
-          err.expiredAt = dayjs(err.expiredAt).format(DATE_FORMAT.DATETIME)
         }
         else if (err.message.includes('invalid token')) {
           message = 'TOKEN 无效'
@@ -47,7 +44,7 @@ function koaJwt(roles?: string[]): Middleware {
         else if (err.message.includes('in JSON at position')) {
           message = 'TOKEN 内容无效'
         }
-        ctx.error(err, message)
+        ctx.error(null, message)
         return
       }
     }
