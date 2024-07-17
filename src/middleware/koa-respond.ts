@@ -8,6 +8,7 @@ function koaRespond(): Middleware {
         code,
         message,
         data,
+        timestamp: Date.now(),
       }
     }
     ctx.error = (data = null, message = '失败', code = 1) => {
@@ -15,6 +16,7 @@ function koaRespond(): Middleware {
         code,
         message,
         data,
+        timestamp: Date.now(),
       }
     }
     await next()
@@ -26,6 +28,7 @@ function koaRespond(): Middleware {
         code: 2,
         message: '没有应答数据',
         data: null,
+        timestamp: Date.now(),
       }
     }
     if (!lodash.isObject(ctx.body) || !['code', 'message', 'data'].every(key => lodash.keys(ctx.body).includes(key))) {
@@ -33,9 +36,9 @@ function koaRespond(): Middleware {
         code: 3,
         message: `应答数据不合规`,
         data: ctx.body,
+        timestamp: Date.now(),
       }
     }
-    // ctx.status = 200
   }
 }
 
