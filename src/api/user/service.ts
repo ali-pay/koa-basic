@@ -96,7 +96,7 @@ export async function remove_user(ctx: IContext) {
  * 注册
  * @param ctx
  */
-export async function signUp(ctx: IContext) {
+export async function sign_up(ctx: IContext) {
   // validate
   const body = await ctx.validateBody({
     username: joi.string().required().min(1),
@@ -130,7 +130,7 @@ export async function signUp(ctx: IContext) {
  * 登录
  * @param ctx
  */
-export async function signIn(ctx: IContext) {
+export async function sign_in(ctx: IContext) {
   // validate
   const body = await ctx.validateBody({
     username: joi.string().required(),
@@ -168,6 +168,26 @@ export async function signIn(ctx: IContext) {
  * 退出
  * @param ctx
  */
-export async function signOut(ctx: IContext) {
+export async function sign_out(ctx: IContext) {
   ctx.success(ctx.state.user)
+}
+
+/**
+ * 获取用户信息
+ * @param ctx
+ */
+export async function profile(ctx: IContext) {
+  const user = await User.findOne({ username: ctx.state.user.username }, { username: 1, nickname: 1, code: 1, disabled: 1, roles: 1, pcMenus: 1, appMenus: 1 })
+    .populate({ path: 'roles', select: ['name', 'code', 'pcMenus', 'appMenus'] })
+  if (!user) {
+    ctx.error(null, '账号错误')
+    return
+  }
+
+  if (user.disabled) {
+    ctx.error(null, '账号已禁用')
+    return
+  }
+
+  ctx.success(user)
 }

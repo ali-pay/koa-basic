@@ -1,5 +1,5 @@
 @host=https://localhost:9000
-@token=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhhMGI0NDU2NThlOTcyZjAwZmQ0MGUiLCJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJlYTRhOWZhMjlkNTUxMDZmN2ViYTRiYWZhZWNiMThjNmViZGZhYmU5MDE5ZjRhNzYzYmIwY2Y5NTUzMWVkNDI5Iiwibmlja25hbWUiOiLotoXnuqfnrqHnkIblkZgiLCJzYWx0IjoiYWxpLXBheSIsImNvZGUiOiIiLCJkaXNhYmxlZCI6ZmFsc2UsInJvbGVzIjpbeyJfaWQiOiI2NjhhMGFhMDVhYjlmOWUxMTQ2NWMwZTMiLCJuYW1lIjoi6LaF57qn566h55CG5ZGYIiwiY29kZSI6ImFkbWluIiwicGNNZW51cyI6W3sibWVudSI6IioiLCJjcmVhdGUiOnRydWUsInJlYWQiOnRydWUsInVwZGF0ZSI6dHJ1ZSwiZGVsZXRlIjp0cnVlfV0sImFwcE1lbnVzIjpbXSwiaWQiOiI2NjhhMGFhMDVhYjlmOWUxMTQ2NWMwZTMifV0sInBjTWVudXMiOltdLCJhcHBNZW51cyI6W10sImlkIjoiNjY4YTBiNDQ1NjU4ZTk3MmYwMGZkNDBlIiwiaWF0IjoxNzIwOTYwODQwLCJleHAiOjE3MjA5NjQ0NDB9.C4L0ZctDtzG6cvXgAZ0uFE1ir4jSG6YQOY7l_ITuW_o
+@token=Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjhhMGI0NDU2NThlOTcyZjAwZmQ0MGUiLCJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJlYTRhOWZhMjlkNTUxMDZmN2ViYTRiYWZhZWNiMThjNmViZGZhYmU5MDE5ZjRhNzYzYmIwY2Y5NTUzMWVkNDI5Iiwibmlja25hbWUiOiLotoXnuqfnrqHnkIblkZgiLCJzYWx0IjoiYWxpLXBheSIsImNvZGUiOiIiLCJkaXNhYmxlZCI6ZmFsc2UsInJvbGVzIjpbeyJfaWQiOiI2NjhhMGFhMDVhYjlmOWUxMTQ2NWMwZTMiLCJuYW1lIjoi6LaF57qn566h55CG5ZGYIiwiY29kZSI6ImFkbWluIiwicGNNZW51cyI6W3sibWVudSI6IioiLCJjcmVhdGUiOnRydWUsInJlYWQiOnRydWUsInVwZGF0ZSI6dHJ1ZSwiZGVsZXRlIjp0cnVlfV0sImFwcE1lbnVzIjpbXSwiaWQiOiI2NjhhMGFhMDVhYjlmOWUxMTQ2NWMwZTMifV0sInBjTWVudXMiOltdLCJhcHBNZW51cyI6W10sImlkIjoiNjY4YTBiNDQ1NjU4ZTk3MmYwMGZkNDBlIiwiaWF0IjoxNzIxMTk5MTk1LCJleHAiOjE3MjM3OTExOTV9.NxfSpo5a4QpjXTgQxqXNbk45StF-7pr9bIkG2fw2dJA
 
 ### 查询用户
 POST {{host}}/api/user/search_user
@@ -54,7 +54,7 @@ Content-Type: application/json
 }
 
 ### 注册
-POST {{host}}/api/user/signUp
+POST {{host}}/api/user/sign_up
 Content-Type: application/json
 
 {
@@ -64,7 +64,7 @@ Content-Type: application/json
 }
 
 ### 登录
-POST {{host}}/api/user/signIn
+POST {{host}}/api/user/sign_in
 Content-Type: application/json
 
 {
@@ -73,10 +73,14 @@ Content-Type: application/json
 }
 
 ### 退出
-POST {{host}}/api/user/signOut
+POST {{host}}/api/user/sign_out
 Content-Type: application/json
 {{token}}
 
 {
 
 }
+
+### 获取用户信息
+GET {{host}}/api/user/profile
+{{token}}
