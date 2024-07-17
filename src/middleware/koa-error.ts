@@ -40,7 +40,9 @@ function koaError(): Middleware {
         err.stack = null
       }
 
-      logger.error(err.stack)
+      if (err.stack) {
+        logger.error(err.stack)
+      }
       ctx.error(err.stack, err.message)
     }
   }
