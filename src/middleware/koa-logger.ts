@@ -6,7 +6,7 @@ function koaLogger(): Middleware {
   return async (ctx, next) => {
     const start = dayjs()
     await next()
-    logger.info(`${ctx.status} ${ctx.method} ${ctx.path} ${dayjs().diff(start)}ms`)
+    logger.info(`[${ctx.method.padStart(6, ' ')}] [${dayjs().diff(start).toString().padStart(5, ' ')}ms] ${ctx.path}`)
   }
 }
 
