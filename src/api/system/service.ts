@@ -13,7 +13,7 @@ export async function ping(ctx: IContext) {
 }
 
 export async function time(ctx: IContext) {
-  ctx.success(dayjs().format(DATE_FORMAT.DATETIMES))
+  ctx.success(dayjs().format(DATE_FORMAT.DATETIME))
 }
 
 export async function status(ctx: IContext) {

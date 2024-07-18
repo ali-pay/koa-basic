@@ -4,8 +4,15 @@
     <link rel="icon" type="image/png" href="./favicon.ico" />
     <script src="./js/socket.io.min.js"></script>
     <script>
+      // socket.io
       const socket = io({ auth: { token: localStorage.getItem('token') } })
-      socket.on('系统时间', (data) => console.log('系统时间:', data))
+      socket.on('心跳', (data) => console.log('socket:', data))
+
+      // websocket
+      const protocol = location.protocol.includes('https') ? 'wss' : 'ws'
+      const port = location.protocol.includes('https') ? '9001' : '8001'
+      const ws = new WebSocket(`${protocol}://${location.hostname}:${port}`)
+      ws.onmessage = (event) => console.log('ws:', JSON.parse(event.data))
     </script>
     <style>
       /* https://garet.typeforward.com/assets/fonts/campaigns/OddvalVariable-VariableVF.woff2 */

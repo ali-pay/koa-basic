@@ -46,7 +46,8 @@
     "systeminformation": "^5.22.11",
     "tree-lodash": "^0.4.0",
     "winston": "^3.13.0",
-    "winston-daily-rotate-file": "^5.0.0"
+    "winston-daily-rotate-file": "^5.0.0",
+    "ws": "^8.18.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.21.1",
@@ -63,6 +64,7 @@
     "@types/mongoose-delete": "^1.0.5",
     "@types/mongoose-sequence": "^3.0.11",
     "@types/numeral": "^2.0.5",
+    "@types/ws": "^8.5.11",
     "eslint": "^9.5.0",
     "eslint-plugin-format": "^0.1.2",
     "mongodb": "^6.8.0",

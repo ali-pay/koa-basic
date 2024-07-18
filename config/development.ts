@@ -5,6 +5,8 @@ export default {
     host: '0.0.0.0',
     httpPort: 8000,
     httpsPort: 9000,
+    wsPort: 8001,
+    wssPort: 9001,
   },
   mongodb: {
     host: '127.0.0.1',

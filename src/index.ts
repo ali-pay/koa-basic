@@ -8,6 +8,7 @@ import logger from '@util/logger'
 import initRouter from '@api/index'
 import initMiddleware from '@middleware/index'
 import initMongodb from '@util/mongodb'
+import initSocketIo from '@util/socket.io'
 import initWebsocket from '@util/websocket'
 import './test'
 
@@ -35,7 +36,7 @@ async function bootstrap() {
 
   // 启动http服务
   const httpServer = http.createServer(app.callback())
-  httpServer.listen(httpPort, host, () => ips.forEach(e => logger.info(`http  服务已启动，地址：http://${e}:${httpPort}`)))
+  httpServer.listen(httpPort, host, () => ips.forEach(e => logger.info(`http    服务已启动，地址：http://${e}:${httpPort}`)))
 
   // 启动https服务
   const options = {
@@ -43,10 +44,13 @@ async function bootstrap() {
     cert: fs.readFileSync('ssl/证书.pem'),
   }
   const httpsServer = https.createServer(options, app.callback())
-  httpsServer.listen(httpsPort, host, () => ips.forEach(e => logger.info(`https 服务已启动，地址：https://${e}:${httpsPort}`)))
+  httpsServer.listen(httpsPort, host, () => ips.forEach(e => logger.info(`https   服务已启动，地址：https://${e}:${httpsPort}`)))
+
+  // 启动socket.io服务
+  initSocketIo(httpServer, httpsServer)
 
   // 启动websocket服务
-  initWebsocket(httpServer, httpsServer)
+  initWebsocket()
 }
 
 bootstrap()
